@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import {ADD_CITY} from './../../ducks/cities';
 import SearchBox from './SearchBox';
 
 class SearchBoxContainer extends Component {
@@ -6,7 +8,8 @@ class SearchBoxContainer extends Component {
     const {
       handleChange,
       searchedCities,
-      value
+      value,
+      addCityToStore,
     } = this.props;
 
     return (
@@ -14,9 +17,23 @@ class SearchBoxContainer extends Component {
         handleChange={handleChange}
         value={value}
         searchedCities={searchedCities}
+        addCityToStore={addCityToStore}
       />
     );
   }
 }
 
-export default SearchBoxContainer;
+function mapDispatchToProps(dispatch) {
+  return {
+    addCityToStore: (value) => {
+      dispatch({
+        type: ADD_CITY,
+        payload: {
+          value
+        }
+      });
+    }
+  };
+}
+
+export default connect(null, mapDispatchToProps)(SearchBoxContainer);

@@ -6,6 +6,7 @@ export const SearchBox = ({
   value,
   handleChange,
   searchedCities,
+  addCityToStore,
 }) => {
   return (
     <div className={className}>
@@ -22,7 +23,7 @@ export const SearchBox = ({
           handleChange(event);
         }}
         onSelect={(value, item) => {
-          console.log('selected', item)
+          addCityToStore(item);
         }}
       />
     </div>

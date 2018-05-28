@@ -1,4 +1,4 @@
-export const ADD_CITY = 'SELECTED_CITY';
+export const ADD_CITY = 'ADD_CITY';
 export const REMOVE_CITY = 'REMOVE_CITY';
 
 export default function (state = [], action) {
