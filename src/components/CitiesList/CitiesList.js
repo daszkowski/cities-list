@@ -9,7 +9,7 @@ export const CitiesList = ({ className, cities, removeCity, addToSearchedList })
       {cities.map((city) =>
         <div className="cities-list-item" key={city.id}>
           {city.name} - {city.id}
-          <button onClick={() => { removeCity(city.id); addToSearchedList(city);}}>Remove</button>
+          <button className="remove-btn" onClick={() => { removeCity(city.id); addToSearchedList(city);}}>Remove</button>
         </div>
       )}
     </div>
@@ -37,6 +37,10 @@ const Styled = styled(CitiesList)`
 
   .cities-list-item {
     padding: 5px 0;
+
+    .remove-btn {
+      margin: 0 10px;
+    }
   }
 `;
 
