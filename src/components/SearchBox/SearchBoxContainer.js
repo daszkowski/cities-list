@@ -10,6 +10,7 @@ class SearchBoxContainer extends Component {
       searchedCities,
       value,
       addCityToStore,
+      removeFromSearchedList,
     } = this.props;
 
     return (
@@ -18,6 +19,7 @@ class SearchBoxContainer extends Component {
         value={value}
         searchedCities={searchedCities}
         addCityToStore={addCityToStore}
+        removeFromSearchedList={removeFromSearchedList}
       />
     );
   }

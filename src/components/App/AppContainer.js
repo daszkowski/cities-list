@@ -16,6 +16,7 @@ class App extends Component {
 
     this.requestSuggestions = _.debounce(this.requestSuggestions, 1000);
     this.handleChange = this.handleChange.bind(this);
+    this.removeFromSearchedList = this.removeFromSearchedList.bind(this);
   }
 
   handleChange(event) {
@@ -26,6 +27,14 @@ class App extends Component {
     });
 
     this.requestSuggestions(value);
+  }
+
+  removeFromSearchedList(item) {
+    const { searchedCities } = this.state;
+
+    this.setState({
+      searchedCities: searchedCities.filter((city) => city.id !== item.id)
+    });
   }
 
   async requestSuggestions(city) {
@@ -59,6 +68,7 @@ class App extends Component {
         <SearchBox
           handleChange={this.handleChange}
           searchedCities={searchedCities}
+          removeFromSearchedList={this.removeFromSearchedList}
           value={value}
         />
         <CitiesList />

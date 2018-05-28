@@ -7,6 +7,7 @@ export const SearchBox = ({
   handleChange,
   searchedCities,
   addCityToStore,
+  removeFromSearchedList,
 }) => {
   return (
     <div className={className}>
@@ -24,6 +25,7 @@ export const SearchBox = ({
         }}
         onSelect={(value, item) => {
           addCityToStore(item);
+          removeFromSearchedList(item);
         }}
       />
     </div>
