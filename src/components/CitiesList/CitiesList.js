@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 export const CitiesList = ({ className, cities, removeCity, addToSearchedList }) => {
   return (
@@ -13,6 +14,17 @@ export const CitiesList = ({ className, cities, removeCity, addToSearchedList })
       )}
     </div>
   );
+};
+
+CitiesList.propTypes = {
+  className: PropTypes.string.isRequired,
+  cities: PropTypes.array,
+  removeCity: PropTypes.func.isRequired,
+  addToSearchedList: PropTypes.func.isRequired,
+};
+
+CitiesList.defaultProps = {
+  cities: [],
 };
 
 const Styled = styled(CitiesList)`

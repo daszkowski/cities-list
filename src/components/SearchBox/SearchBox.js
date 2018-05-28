@@ -1,6 +1,7 @@
 import React from 'react';
 import Autocomplete from 'react-autocomplete';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 export const SearchBox = ({
   className,
@@ -34,6 +35,22 @@ export const SearchBox = ({
       />
     </div>
   );
+};
+
+SearchBox.propTypes = {
+  className: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  searchedCities: PropTypes.array,
+  addCityToStore: PropTypes.func.isRequired,
+  removeFromSearchedList: PropTypes.func.isRequired,
+  numberOfCities: PropTypes.number,
+  placeholder: PropTypes.string.isRequired,
+};
+
+SearchBox.defaultProps = {
+  searchedCities: [],
+  numberOfCities: 0,
 };
 
 const Styled = styled(SearchBox)`
