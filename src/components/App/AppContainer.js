@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import SearchBox from '../SearchBox';
+import _ from 'lodash';
 
 const url = 'http://0.0.0.0:8080/v1/autocomplete?q=';
 
@@ -11,6 +13,38 @@ class App extends Component {
       value: ''
     };
 
+    this.requestSuggestions = _.debounce(this.requestSuggestions, 1000);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    const { value } = event.target;
+
+    this.setState({
+      value
+    });
+
+    this.requestSuggestions(value);
+  }
+
+  async requestSuggestions(city) {
+
+    const requestUrl = url + city;
+
+    this.setState({
+    });
+
+    try {
+      const response = await fetch(requestUrl);
+      const parseResponse = await response.json();
+
+      this.setState({
+        searchedCities: parseResponse,
+      })
+    }
+    catch (error) {
+      console.log('there was an error', error)
+    }
   }
 
   render() {
@@ -20,8 +54,12 @@ class App extends Component {
     } = this.state;
 
     return (
-      <div className={'App'}>
-        <div>App Container</div>
+      <div className="App">
+        <SearchBox
+          handleChange={this.handleChange}
+          searchedCities={searchedCities}
+          value={value}
+        />
       </div>
     );
   }
