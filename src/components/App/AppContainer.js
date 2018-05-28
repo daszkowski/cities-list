@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
+import styled from 'styled-components';
 import SearchBox from '../SearchBox';
 import CitiesList from '../CitiesList';
 
@@ -67,13 +68,14 @@ class App extends Component {
   }
 
   render() {
+    const {className} = this.props;
     const {
       searchedCities,
       value,
     } = this.state;
 
     return (
-      <div className="App">
+      <div className={`${className} App`}>
         <SearchBox
           handleChange={this.handleChange}
           searchedCities={searchedCities}
@@ -86,4 +88,10 @@ class App extends Component {
   }
 }
 
-export default App;
+const Styled = styled(App)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export default Styled;

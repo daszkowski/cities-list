@@ -1,5 +1,6 @@
 import React from 'react';
 import Autocomplete from 'react-autocomplete';
+import styled from 'styled-components';
 
 export const SearchBox = ({
   className,
@@ -35,4 +36,9 @@ export const SearchBox = ({
   );
 };
 
-export default SearchBox;
+const Styled = styled(SearchBox)`
+  padding: 20px;
+  border-bottom: 1px solid #000;
+`;
+
+export default Styled;
