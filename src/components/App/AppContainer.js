@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import SearchBox from '../SearchBox';
 import _ from 'lodash';
+import SearchBox from '../SearchBox';
+import CitiesList from '../CitiesList';
 
 const url = 'http://0.0.0.0:8080/v1/autocomplete?q=';
 
@@ -60,6 +61,7 @@ class App extends Component {
           searchedCities={searchedCities}
           value={value}
         />
+        <CitiesList />
       </div>
     );
   }
