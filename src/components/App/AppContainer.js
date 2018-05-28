@@ -17,6 +17,7 @@ class App extends Component {
     this.requestSuggestions = _.debounce(this.requestSuggestions, 1000);
     this.handleChange = this.handleChange.bind(this);
     this.removeFromSearchedList = this.removeFromSearchedList.bind(this);
+    this.addToSearchedList = this.addToSearchedList.bind(this);
   }
 
   handleChange(event) {
@@ -34,6 +35,14 @@ class App extends Component {
 
     this.setState({
       searchedCities: searchedCities.filter((city) => city.id !== item.id)
+    });
+  }
+
+  addToSearchedList(city) {
+    const { searchedCities } = this.state;
+
+    this.setState({
+      searchedCities: [...searchedCities, city]
     });
   }
 
@@ -71,7 +80,7 @@ class App extends Component {
           removeFromSearchedList={this.removeFromSearchedList}
           value={value}
         />
-        <CitiesList />
+        <CitiesList addToSearchedList={this.addToSearchedList} />
       </div>
     );
   }

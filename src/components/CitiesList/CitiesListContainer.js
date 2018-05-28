@@ -5,9 +5,9 @@ import CitiesList from './CitiesList';
 
 class CitiesListContainer extends Component {
   render() {
-    const { cities, removeCity } = this.props;
+    const { cities, removeCity, addToSearchedList } = this.props;
     return (
-      <CitiesList cities={cities} removeCity={removeCity} />
+      <CitiesList cities={cities} removeCity={removeCity} addToSearchedList={addToSearchedList} />
     );
   }
 }
