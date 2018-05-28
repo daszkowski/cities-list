@@ -8,6 +8,8 @@ export const SearchBox = ({
   searchedCities,
   addCityToStore,
   removeFromSearchedList,
+  numberOfCities,
+  placeholder
 }) => {
   return (
     <div className={className}>
@@ -27,6 +29,7 @@ export const SearchBox = ({
           addCityToStore(item);
           removeFromSearchedList(item);
         }}
+        inputProps={{disabled: numberOfCities > 5, placeholder: placeholder}}
       />
     </div>
   );

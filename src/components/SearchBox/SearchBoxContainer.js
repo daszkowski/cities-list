@@ -11,6 +11,7 @@ class SearchBoxContainer extends Component {
       value,
       addCityToStore,
       removeFromSearchedList,
+      numberOfCities,
     } = this.props;
 
     return (
@@ -20,9 +21,17 @@ class SearchBoxContainer extends Component {
         searchedCities={searchedCities}
         addCityToStore={addCityToStore}
         removeFromSearchedList={removeFromSearchedList}
+        numberOfCities={numberOfCities}
+        placeholder={'Please enter DE city'}
       />
     );
   }
+}
+
+function mapStateToProps(state) {
+  return {
+    numberOfCities: state.cities.length
+  };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -38,4 +47,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(SearchBoxContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBoxContainer);
